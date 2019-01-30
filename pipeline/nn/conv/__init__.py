@@ -1,0 +1,1 @@
+from .minigooglenet import MiniGoogLeNet
