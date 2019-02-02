@@ -21,7 +21,7 @@ The MiniGoogLeNet on CAFAR-10 dataset is inspired by [Eric Jang](https://twitter
 
 There are three modules inside MiniGoogLeNet, including Conv module, inception module, downsample module. Figure 1 shows the MiniGoogLeNet architecture.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/minigooglenet_architecture.png" width="500">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/minigooglenet_architecture.png" width="600">
 
 Figure 1: MiniGoogLeNet architecture ([reference](https://arxiv.org/pdf/1611.03530.pdf)).
 
@@ -35,7 +35,7 @@ The `trainingmonitor.py` ([check here](https://github.com/meng1994412/GoogLeNet_
 ### MiniGoogLeNet on CIFAR-10
 Figure 2 demonstrates the loss and accuracy curve of training and validation sets. And Figure 3 shows the evaluation of the network, which indicate a 90% accuracy.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/7879.png" width="400">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/7879.png" width="500">
 
 Figure 2: Plot of training and validation loss and accuracy.
 
