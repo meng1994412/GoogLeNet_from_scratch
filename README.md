@@ -60,7 +60,7 @@ Figure 2: Inception module, which is the micro architecture of the GoogLeNet ([r
 Table 1 illustrates the GoogLeNet architecture ([reference](https://arxiv.org/abs/1409.4842)).
 
 | layer type | patch size/stride | output size | depth | #1x1 | #3x3 reduce| #3x3 | #5x5 reduce | #5x5 | pool proj |
-| ------------- |:-----:| :---------:|:-:|:---:|:---:|:---:|:---:|:---:|----:|
+| ------------- |:-----:| :---------:|:-:|:---:|:---:|:---:|:---:|:---:|:---:|
 | convolution   | 5x5/2 | 112x112x64 | 1 |     |     |     |     |     |     |
 | max pool      | 3x3/2 |  56x56x64  | 0 |     |     |     |     |     |     |
 | convolution   | 3x3/1 | 56x56x192  | 2 |     | 64  | 192 |     |     |     |
@@ -130,33 +130,33 @@ Figure 5 demonstrates the loss and accuracy curve of training and validation set
 
 Figure 5: Plot of training and validation loss and accuracy.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/tiny_imagenet_experiment_1.png" width="400">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/tiny_imagenet_experiment_1.png" width="300">
 
 Figure 6: Evaluation of the network, indicating 45.81% rank-1 accuracy and 72.96% rank-5 accuracy.
 
 #### Experiment 2
 In experiment 2, I still use learning rate in Table 2. In order to increase the accuracy, I change the `convolution module` to use `CONV => RELU => BN` sequence instead of `CONV => BN => RELU`.
 
-Figure 7 demonstrates the loss and accuracy curve of training and validation sets. And Figure 8 shows the evaluation of the network, which indicate 47.26% rank-1 accuracy and 73.59% rank-5 accuracy. There is about 1.4% increment in rank-1 accuracy, comparing to the result in experiment 1.
+Figure 7 demonstrates the loss and accuracy curve of training and validation sets. And Figure 8 shows the evaluation of the network, which indicate 47.26% rank-1 accuracy and 73.59% rank-5 accuracy. There is about 1.4% increment in rank-1 accuracy and 0.6% increment in rank-5 accuracy, comparing to the result in experiment 1.
 
 <img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tinyimagenet_2.png" width="500">
 
 Figure 7: Plot of training and validation loss and accuracy.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/tiny_imagenet_experiment_2.png" width="400">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/tiny_imagenet_experiment_2.png" width="300">
 
 Figure 8: Evaluation of the network, indicating 47.26% rank-1 accuracy and 73.59% rank-5 accuracy.
 
 #### Experiment 3
 In the experiment 3, I use the `convolution module` in [experiment 2](#experiment-2), but change the method from "ctrl+c" to learning rate decay. And the number of epoch is still 70.
 
-Figure 9 demonstrates the loss and accuracy curve of training and validation sets. And Figure 10 shows the evaluation of the network, which indicate 48.16% rank-1 accuracy and 74.15% rank-5 accuracy. There is about 1.4% increment in rank-1 accuracy, comparing to the result in experiment 1.
+Figure 9 demonstrates the loss and accuracy curve of training and validation sets. And Figure 10 shows the evaluation of the network, which indicate 48.16% rank-1 accuracy and 74.15% rank-5 accuracy.
 
 <img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tinyimagenet_3.png" width="500">
 
 Figure 9: Plot of training and validation loss and accuracy.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/tiny_imagenet_experiment_3.png" width="400">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/tiny_imagenet_experiment_3.png" width="300">
 
 Figure 10: Evaluation of the network, indicating 48.16% rank-1 accuracy and 74.15% rank-5 accuracy.
 
