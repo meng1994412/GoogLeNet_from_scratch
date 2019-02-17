@@ -30,8 +30,8 @@ class GoogLeNet:
         # define a CONV => BN => RELU pattern
         x = Conv2D(K, (kX, kY), strides = stride, padding = padding,
             kernel_regularizer = l2(reg), name = convName)(x)
-        x = Activation("relu", name = actName)(x)
         x = BatchNormalization(axis = chanDim, name = bnName)(x)
+        x = Activation("relu", name = actName)(x)
 
         # return the block
         return x
