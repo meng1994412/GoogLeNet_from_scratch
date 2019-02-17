@@ -6,11 +6,11 @@ Implement GoogLeNet family from scratch, including MiniGoogLeNet and GoogLeNet, 
 
 ## Packages Used
 * Python 3.6
-* [OpenCV](https://docs.opencv.org/3.4.4/) 3.4.4
-* [keras](https://keras.io/) 2.2.4
-* [Tensorflow](https://www.tensorflow.org/install/) 1.12.0
-* [cuda toolkit](https://developer.nvidia.com/cuda-toolkit) 9.0
-* [cuDNN](https://developer.nvidia.com/cudnn) 7.1.2
+* [OpenCV](https://docs.opencv.org/3.4.4/) 4.0.0
+* [keras](https://keras.io/) 2.2.4 for ResNet on CIFAR-10 and 2.1.0 for the rest
+* [Tensorflow](https://www.tensorflow.org/install/) 1.13.0
+* [cuda toolkit](https://developer.nvidia.com/cuda-toolkit) 10.0
+* [cuDNN](https://developer.nvidia.com/cudnn) 7.4.2
 * [scikit-learn](https://scikit-learn.org/stable/) 0.20.2
 * [Imutils](https://github.com/jrosebr1/imutils)
 * [NumPy](http://www.numpy.org/)
@@ -82,6 +82,8 @@ Table 1 illustrates the GoogLeNet architecture ([reference](https://arxiv.org/ab
 | softmax       |       |  1x1x1024  | 0 |     |     |     |     |     |     |
 
 Instead of using 7x7 filters with stride of 2x2 in the first convolution layer, I use 5x5 filters with stride of 1x1, since the input images have dimension of 64x64x3, unlike original GoogLeNet which has input dimension of 224x224x3. Thus, 7x7 filters with stride of 2x2 will reduce the dimensions too quickly.
+
+The GoogleNet can be found in `googlenet.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/nn/conv/googlenet.py)) under `nn/conv/` directory.
 
 #### Train the GoogLeNet and evaluate it
 I use a "ctrl+c" method to train the model as a baseline. By using this method, I can start training with an initial learning rate (and associated set of hyperparameters), monitor training, and quickly adjust the learning rate based on the results as they come in.
