@@ -10,7 +10,6 @@ from pipeline.preprocessing import MeanPreprocessor
 from pipeline.callbacks import TrainingMonitor
 from pipeline.callbacks import EpochCheckpoint
 from pipeline.io import HDF5DatasetGenerator
-from pipeline.nn.conv import DeeperGoogLeNet
 from pipeline.nn.conv import GoogLeNet
 from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import Adam
@@ -53,7 +52,7 @@ valGen = HDF5DatasetGenerator(config.VAL_HDF5, 64,
 # the network and compile the model
 if args["model"] is None:
     print("[INFO] compiling model...")
-    model = DeeperGoogLeNet.build(width = 64, height = 64, depth = 3,
+    model = GoogLeNet.build(width = 64, height = 64, depth = 3,
         classes = config.NUM_CLASSES, reg = 0.0002)
     opt = Adam(lr = 1e-3)
     model.compile(loss = "categorical_crossentropy", optimizer = opt,
@@ -66,7 +65,7 @@ else:
 
     # update the learning rate
     print("[INFO] old learning rate: {}".format(K.get_value(model.optimizer.lr)))
-    K.set_value(model.optimizer.lr, 1e-4)
+    K.set_value(model.optimizer.lr, 1e-5)
     print("[INFO] new learning rate: {}".format(K.get_value(model.optimizer.lr)))
 
 # construct the set of callbacks

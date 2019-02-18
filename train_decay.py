@@ -10,7 +10,6 @@ from pipeline.preprocessing import MeanPreprocessor
 from pipeline.callbacks import TrainingMonitor
 from pipeline.callbacks import EpochCheckpoint
 from pipeline.io import HDF5DatasetGenerator
-from pipeline.nn.conv import DeeperGoogLeNet
 from pipeline.nn.conv import GoogLeNet
 from keras.preprocessing.image import ImageDataGenerator
 from keras.callbacks import LearningRateScheduler
@@ -21,7 +20,7 @@ import argparse
 import json
 
 # define the total number of epochs to train for along with the initial learning rate
-NUM_EPOCHS = 100
+NUM_EPOCHS = 75
 INIT_LR = 1e-3
 
 def poly_decay(epoch):
