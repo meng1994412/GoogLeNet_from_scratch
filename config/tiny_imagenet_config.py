@@ -30,7 +30,7 @@ DATASET_MEAN = "output/tiny-imagenet-200-mean.json"
 # define the path to the output directory used for storing plots,
 # classification reports, etc
 OUTPUT_PATH = "output"
-# MODEL_PATH = path.sep.join([OUTPUT_PATH, "checkpoints/epochs_70.hdf5"])
 MODEL_PATH = path.sep.join([OUTPUT_PATH, "checkpoints/epochs_70.hdf5"])
-FIG_PATH = path.sep.join([OUTPUT_PATH, "deepergooglenet_tinyimagenet_6.png"])
-JSON_PATH = path.sep.join([OUTPUT_PATH, "deepergooglenet_tinyimagenet_6.json"])
+# MODEL_PATH = path.sep.join([OUTPUT_PATH, "googlenet_tiny_imagenet_2.hdf5"])
+FIG_PATH = path.sep.join([OUTPUT_PATH, "googlenet_tinyimagenet_3.png"])
+JSON_PATH = path.sep.join([OUTPUT_PATH, "googlenet_tinyimagenet_3.json"])
