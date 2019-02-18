@@ -132,7 +132,7 @@ Figure 5 demonstrates the loss and accuracy curve of training and validation set
 
 Figure 5: Plot of training and validation loss and accuracy.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tiny_imagenet_1.png" width="250">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tiny_imagenet_1.png" width="200">
 
 Figure 6: Evaluation of the network, indicating 55.05% rank-1 accuracy and 79.64% rank-5 accuracy.
 
@@ -145,7 +145,7 @@ Figure 7 demonstrates the loss and accuracy curve of training and validation set
 
 Figure 7: Plot of training and validation loss and accuracy.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tiny_imagenet_2.png" width="250">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tiny_imagenet_2.png" width="200">
 
 Figure 8: Evaluation of the network, indicating 55.41% rank-1 accuracy and 80.68% rank-5 accuracy.
 
@@ -158,7 +158,7 @@ Figure 9 demonstrates the loss and accuracy curve of training and validation set
 
 Figure 9: Plot of training and validation loss and accuracy.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tiny_imagenet_3.png" width="250">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tiny_imagenet_3.png" width="200">
 
 Figure 10: Evaluation of the network, indicating 57.34% rank-1 accuracy and 81.25% rank-5 accuracy.
 
