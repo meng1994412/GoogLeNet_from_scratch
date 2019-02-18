@@ -6,11 +6,11 @@ Implement GoogLeNet family from scratch, including MiniGoogLeNet and GoogLeNet, 
 
 ## Packages Used
 * Python 3.6
-* [OpenCV](https://docs.opencv.org/3.4.4/) 3.4.4
-* [keras](https://keras.io/) 2.2.4
-* [Tensorflow](https://www.tensorflow.org/install/) 1.12.0
-* [cuda toolkit](https://developer.nvidia.com/cuda-toolkit) 9.0
-* [cuDNN](https://developer.nvidia.com/cudnn) 7.1.2
+* [OpenCV](https://docs.opencv.org/3.4.4/) 4.0.0
+* [keras](https://keras.io/) 2.2.4 for ResNet on CIFAR-10 and 2.1.0 for the rest
+* [Tensorflow](https://www.tensorflow.org/install/) 1.13.0
+* [cuda toolkit](https://developer.nvidia.com/cuda-toolkit) 10.0
+* [cuDNN](https://developer.nvidia.com/cudnn) 7.4.2
 * [scikit-learn](https://scikit-learn.org/stable/) 0.20.2
 * [Imutils](https://github.com/jrosebr1/imutils)
 * [NumPy](http://www.numpy.org/)
@@ -83,6 +83,8 @@ Table 1 illustrates the GoogLeNet architecture ([reference](https://arxiv.org/ab
 
 Instead of using 7x7 filters with stride of 2x2 in the first convolution layer, I use 5x5 filters with stride of 1x1, since the input images have dimension of 64x64x3, unlike original GoogLeNet which has input dimension of 224x224x3. Thus, 7x7 filters with stride of 2x2 will reduce the dimensions too quickly.
 
+The GoogleNet can be found in `googlenet.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/nn/conv/googlenet.py)) under `nn/conv/` directory.
+
 #### Train the GoogLeNet and evaluate it
 I use a "ctrl+c" method to train the model as a baseline. By using this method, I can start training with an initial learning rate (and associated set of hyperparameters), monitor training, and quickly adjust the learning rate based on the results as they come in.
 
@@ -124,40 +126,40 @@ Table 2: Learning rate schedule for experiment 1.
 |41 - 60| 1e-4          |
 |61 - 70| 1e-5          |
 
-Figure 5 demonstrates the loss and accuracy curve of training and validation sets. And Figure 6 shows the evaluation of the network, which indicate 45.81% rank-1 accuracy and 72.96% rank-5 accuracy.
+Figure 5 demonstrates the loss and accuracy curve of training and validation sets. And Figure 6 shows the evaluation of the network, which indicate 55.05% rank-1 accuracy and 79.64% rank-5 accuracy.
 
 <img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tinyimagenet_1.png" width="500">
 
 Figure 5: Plot of training and validation loss and accuracy.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/tiny_imagenet_experiment_1.png" width="300">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tiny_imagenet_1.png" width="250">
 
-Figure 6: Evaluation of the network, indicating 45.81% rank-1 accuracy and 72.96% rank-5 accuracy.
+Figure 6: Evaluation of the network, indicating 55.05% rank-1 accuracy and 79.64% rank-5 accuracy.
 
 #### Experiment 2
 In experiment 2, I still use learning rate in Table 2. In order to increase the accuracy, I change the `convolution module` to use `CONV => RELU => BN` sequence instead of `CONV => BN => RELU`.
 
-Figure 7 demonstrates the loss and accuracy curve of training and validation sets. And Figure 8 shows the evaluation of the network, which indicate 47.26% rank-1 accuracy and 73.59% rank-5 accuracy. There is about 1.4% increment in rank-1 accuracy and 0.6% increment in rank-5 accuracy, comparing to the result in experiment 1.
+Figure 7 demonstrates the loss and accuracy curve of training and validation sets. And Figure 8 shows the evaluation of the network, which indicate 55.41% rank-1 accuracy and 80.68% rank-5 accuracy. There is about 0.35% increment in rank-1 accuracy and 1% increment in rank-5 accuracy, comparing to the result in experiment 1.
 
 <img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tinyimagenet_2.png" width="500">
 
 Figure 7: Plot of training and validation loss and accuracy.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/tiny_imagenet_experiment_2.png" width="300">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tiny_imagenet_2.png" width="250">
 
-Figure 8: Evaluation of the network, indicating 47.26% rank-1 accuracy and 73.59% rank-5 accuracy.
+Figure 8: Evaluation of the network, indicating 55.41% rank-1 accuracy and 80.68% rank-5 accuracy.
 
 #### Experiment 3
 In the experiment 3, I use the `convolution module` in [experiment 2](#experiment-2), but change the method from "ctrl+c" to learning rate decay. And the number of epoch is still 70.
 
-Figure 9 demonstrates the loss and accuracy curve of training and validation sets. And Figure 10 shows the evaluation of the network, which indicate 48.16% rank-1 accuracy and 74.15% rank-5 accuracy.
+Figure 9 demonstrates the loss and accuracy curve of training and validation sets. And Figure 10 shows the evaluation of the network, which indicate 57.34% rank-1 accuracy and 81.25% rank-5 accuracy.
 
 <img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tinyimagenet_3.png" width="500">
 
 Figure 9: Plot of training and validation loss and accuracy.
 
-<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/tiny_imagenet_experiment_3.png" width="300">
+<img src="https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/output/googlenet_tiny_imagenet_3.png" width="250">
 
-Figure 10: Evaluation of the network, indicating 48.16% rank-1 accuracy and 74.15% rank-5 accuracy.
+Figure 10: Evaluation of the network, indicating 57.34% rank-1 accuracy and 81.25% rank-5 accuracy.
 
-By using this rank-1 accuracy, I can claim #8 position on the Leaderboard in [Tiny ImageNet Visual Recognition Challenge](https://tiny-imagenet.herokuapp.com/).
+By using this rank-1 accuracy, I can claim #5 position on the Leaderboard in [Tiny ImageNet Visual Recognition Challenge](https://tiny-imagenet.herokuapp.com/).
