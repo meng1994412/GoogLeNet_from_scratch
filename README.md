@@ -116,7 +116,7 @@ Figure 4: Evaluation of the network, indicating 90% accuracy.
 
 ### GoogLeNet on Tiny ImageNet
 #### Experiment 1
-In experiment 1, I use "ctrl+c" method with learning rate schedule shown as Table 2.
+In experiment 1, I use "ctrl+c" method with learning rate schedule shown as Table 2. `SGD` optimizer with momentum of 0.9 and nesterov acceleration is used. The sequence of `convolution_module` is `CONV => BN => ReLU`
 
 Table 2: Learning rate schedule for experiment 1.
 
