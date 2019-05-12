@@ -35,6 +35,12 @@ There is a helper class:
 
 The `trainingmonitor.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/callbacks/trainingmonitor.py)) under `pipeline/callbacks/` directory create a `TrainingMonitor` callback that will be called at the end of every epoch when training a network. The monitor will construct a plot of training loss and accuracy. Applying such callback during training will enable us to babysit the training process and spot overfitting early, allowing us to abort the experiment and continue trying to tune parameters.
 
+We could use following command to train the model.
+
+```
+python googlenet_cifar10.py --model output/minigooglenet_cifar10.hdf5 --output output
+```
+
 ### GoogLeNet on Tiny ImageNet Visual Recognition Challenge
 The details about the challenge and dataset can be found [here](https://tiny-imagenet.herokuapp.com/).
 
@@ -44,6 +50,12 @@ The `tiny_imagenet_config.py` ([check here](https://github.com/meng1994412/GoogL
 The `hdf5datasetwriter.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/io/hdf5datasetwriter.py)) under `pipeline/io/` directory, defines a class that help to write raw images or features into `HDF5` dataset.
 
 The `build_tiny_imagenet.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/build_tiny_imagenet.py)) is used for serializing the raw images into an `HDF5` dataset. Although `Keras` has methods that can allow us to use the raw file paths on disk as input to the training process, this method is highly inefficient. Each and every image residing on disk requires an I/O operation which introduces latency into training pipeline. Not only is `HDF5` capable of storing massive dataset, but it is optimized for I/O operations.
+
+We could use following command to build Tiny ImageNet dataset.
+
+```
+python build_tiny_imagenet.py
+```
 
 #### Build image pre-processors
 The `meanpreprocessor.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/preprocessing/meanpreprocessor.py)) under `pipeline/preprocessing/` directory subtracts the mean red, green, and blue pixel intensties across the training set, which is a form of data normalization. Mean subtraction is used to reduce the affects of lighting variations during classification.
@@ -103,6 +115,26 @@ The `EpochCheckpoint.py` ([check here](https://github.com/meng1994412/GoogLeNet_
 The `hdf5datasetgenerator.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/io/hdf5datasetgenerator.py)) under `pipeline/io/` directory yields batches of images and labels from `HDF5` dataset. This class can help to facilitate our ability to work with datasets that are too big to fit into memory.
 
 The `ranked.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/utils/ranked.py)) under `pipeline/utils/` directory contains a helper function to measure both the `rank-1` and `rank-5` accuracy when the model is evaluated by using testing set.
+
+We could use following command to train the model if we start from the beginning.
+```
+python train.py --checkpoints output/checkpoints
+```
+
+If we start the training at middle of the epochs (simply use a number to replace `{epoch_number_you_want_to_start}`):
+```
+python train.py --checkpoints output/checkpoints --model output/checkpoints/epoch_{epoch_number_you_want_to_start}.hdf --start_epoch {the_epoch_number_you_want_to_start}
+```
+
+For learning rate decay, just use following command:
+```
+python train_decay.py --model output/googlenet_tinyimagenet_decay.hdf5
+```
+
+In order to use testing set to evaluate the network, use the following command:
+```
+python rank_accuracy.py
+```
 
 ## Results
 ### MiniGoogLeNet on CIFAR-10
