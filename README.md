@@ -75,7 +75,7 @@ Table 1 illustrates the GoogLeNet architecture ([reference](https://arxiv.org/ab
 
 | layer type | patch size/stride | output size | depth | #1x1 | #3x3 reduce| #3x3 | #5x5 reduce | #5x5 | pool proj |
 | ------------- |:-----:| :---------:|:-:|:---:|:---:|:---:|:---:|:---:|:---:|
-| convolution   | 5x5/1 | 112x112x64 | 1 |     |     |     |     |     |     |
+| convolution   | 7x7/2 | 112x112x64 | 1 |     |     |     |     |     |     |
 | max pool      | 3x3/2 |  56x56x64  | 0 |     |     |     |     |     |     |
 | convolution   | 3x3/1 | 56x56x192  | 2 |     | 64  | 192 |     |     |     |
 | max pool      | 3x3/2 | 28x28x192  | 0 |     |     |     |     |     |     |
