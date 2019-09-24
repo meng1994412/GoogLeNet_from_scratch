@@ -7,7 +7,7 @@ Implement GoogLeNet family from scratch, including MiniGoogLeNet and GoogLeNet, 
 ## Packages Used
 * Python 3.6
 * [OpenCV](https://docs.opencv.org/3.4.4/) 4.0.0
-* [keras](https://keras.io/) 2.2.4 for ResNet on CIFAR-10 and 2.1.0 for the rest
+* [keras](https://keras.io/) 2.2.4 for GoogLeNet on CIFAR-10 and 2.1.0 for the rest
 * [Tensorflow](https://www.tensorflow.org/install/) 1.13.0
 * [cuda toolkit](https://developer.nvidia.com/cuda-toolkit) 10.0
 * [cuDNN](https://developer.nvidia.com/cudnn) 7.4.2
@@ -46,7 +46,7 @@ The details about the challenge and dataset can be found [here](https://tiny-ima
 
 The `tiny_imagenet_config.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/config/tiny_imagenet_config.py)) under `config/` directory stores all relevant configurations for the project, including the paths to input images, total number of class labels, information on the training, validation, and testing splits, path to the HDF5 datasets, and path to output models, plots, and etc.
 
-#### Build the `HDF5` dataset
+#### Build the infrastructure for `HDF5` dataset
 The `hdf5datasetwriter.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/io/hdf5datasetwriter.py)) under `pipeline/io/` directory, defines a class that help to write raw images or features into `HDF5` dataset.
 
 The `build_tiny_imagenet.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/build_tiny_imagenet.py)) is used for serializing the raw images into an `HDF5` dataset. Although `Keras` has methods that can allow us to use the raw file paths on disk as input to the training process, this method is highly inefficient. Each and every image residing on disk requires an I/O operation which introduces latency into training pipeline. Not only is `HDF5` capable of storing massive dataset, but it is optimized for I/O operations.
@@ -75,7 +75,7 @@ Table 1 illustrates the GoogLeNet architecture ([reference](https://arxiv.org/ab
 
 | layer type | patch size/stride | output size | depth | #1x1 | #3x3 reduce| #3x3 | #5x5 reduce | #5x5 | pool proj |
 | ------------- |:-----:| :---------:|:-:|:---:|:---:|:---:|:---:|:---:|:---:|
-| convolution   | 5x5/2 | 112x112x64 | 1 |     |     |     |     |     |     |
+| convolution   | 5x5/1 | 112x112x64 | 1 |     |     |     |     |     |     |
 | max pool      | 3x3/2 |  56x56x64  | 0 |     |     |     |     |     |     |
 | convolution   | 3x3/1 | 56x56x192  | 2 |     | 64  | 192 |     |     |     |
 | max pool      | 3x3/2 | 28x28x192  | 0 |     |     |     |     |     |     |
@@ -110,7 +110,7 @@ The `rank_accuracy.py` ([check here](https://github.com/meng1994412/GoogLeNet_fr
 
 There are some helper classes for training process, including:
 
-The `EpochCheckpoint.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/callbacks/epochcheckpoint.py)) can help to store individual checkpoints for GoogLeNet so that we do not have to retrain the network from beginning. The model is stored every 5 epochs.
+The `EpochCheckpoint.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/callbacks/epochcheckpoint.py)) under `pipeline/callbacks/` directory can help to store individual checkpoints for GoogLeNet so that we do not have to retrain the network from beginning. The model is stored every 5 epochs.
 
 The `hdf5datasetgenerator.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/io/hdf5datasetgenerator.py)) under `pipeline/io/` directory yields batches of images and labels from `HDF5` dataset. This class can help to facilitate our ability to work with datasets that are too big to fit into memory.
 
