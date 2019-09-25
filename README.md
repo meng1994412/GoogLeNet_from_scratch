@@ -92,10 +92,10 @@ Table 1 illustrates the GoogLeNet architecture ([reference](https://arxiv.org/ab
 | inception(5b) |       |  7x7x1024  | 2 | 384 | 192 | 384 | 48  | 128 | 128 |
 | avg pool      | 7x7/1 |  1x1x1024  | 0 |     |     |     |     |     |     |
 | dropout(40%)  |       |  1x1x1024  | 0 |     |     |     |     |     |     |
-| linear        |       |  1x1x1024  | 1 |     |     |     |     |     |     |
-| softmax       |       |  1x1x1024  | 0 |     |     |     |     |     |     |
+| linear        |       |  1x1x1000  | 1 |     |     |     |     |     |     |
+| softmax       |       |  1x1x1000  | 0 |     |     |     |     |     |     |
 
-Instead of using 7x7 filters with stride of 2x2 in the first convolution layer, I use 5x5 filters with stride of 1x1, since the input images have dimension of 64x64x3, unlike original GoogLeNet which has input dimension of 224x224x3. Thus, 7x7 filters with stride of 2x2 will reduce the dimensions too quickly.
+Instead of using 7x7 filters with stride of 2x2 in the first convolution layer, I use 5x5 filters with stride of 1x1, since the input images have dimension of 64x64x3, unlike original GoogLeNet which has input dimension of 224x224x3. Thus, 7x7 filters with stride of 2x2 will reduce the dimensions too quickly. Also the size of average pooling layer should be 4x4 instead of 7x7, with stride of 1.
 
 The GoogleNet can be found in `googlenet.py` ([check here](https://github.com/meng1994412/GoogLeNet_from_scratch/blob/master/pipeline/nn/conv/googlenet.py)) under `nn/conv/` directory.
 
